@@ -37,7 +37,7 @@ public class AdminController {
         this.userService = userService;
     }
 
-    @Secured({"MANAGER"})
+    @Secured({"ROLE_MANAGER"})
     @GetMapping("/products")
     public String showAllProducts(Model model,
                                   @RequestParam(defaultValue = "1", name = "p") Integer page,
