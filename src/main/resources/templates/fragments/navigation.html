@@ -12,15 +12,19 @@
                 <li class="nav-item" th:classappend="${activeTab == 'Index' ? 'active' : ''}">
                     <a class="nav-link" th:href="@{/}">Главная</a>
                 </li>
-                <li class="nav-item" th:classappend="${activeTab == 'Products' ? 'active' : ''}">
-                    <a class="nav-link" th:href="@{/admin/products}">Продукты</a>
-                </li>
-                <li class="nav-item" th:classappend="${activeTab == 'Orders' ? 'active' : ''}">
-                    <a class="nav-link" th:href="@{/admin/orders}">Заказы</a>
-                </li>
-                <li class="nav-item" th:classappend="${activeTab == 'Products' ? 'active' : ''}">
-                    <a class="nav-link" th:href="@{/admin/users}">Клиенты</a>
-                </li>
+
+<!--                Убрал навигацию внутри страниц, потому что когда проваливаешься и менеджер и админ мог перейти, чего не должно быть!!!!-->
+<!--                <li class="nav-item" th:classappend="${activeTab == 'Products' ? 'active' : ''}">-->
+<!--                    <a class="nav-link" th:href="@{/admin/products}">Продукты</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" th:classappend="${activeTab == 'Orders' ? 'active' : ''}">-->
+<!--                    <a class="nav-link" th:href="@{/admin/orders}">Заказы</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" th:classappend="${activeTab == 'Products' ? 'active' : ''}">-->
+<!--                    <a class="nav-link" th:href="@{/admin/users}">Клиенты</a>-->
+<!--                </li>-->
+
+
                 <li class="nav-item">
                     <a class="nav-link" sec:authentication="name"></a>
                 </li>
