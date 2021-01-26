@@ -33,12 +33,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.userService = userService;
     }
 
-
+    //Что делают .POST и .GET, так и не понял. Не подключается к формам add и edit.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/admin/products/").hasAnyRole("ADMIN", "SUPER_ADMIN", "MANAGER")
-                .antMatchers("/admin/").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/admin/products/add/").hasRole("ADMIN")
+                .antMatchers("/admin/products/edit/").hasRole("ADMIN")
                 .antMatchers("/cart/createOrder*").authenticated()
                 .antMatchers("/registration*").anonymous()
                 .anyRequest().permitAll()

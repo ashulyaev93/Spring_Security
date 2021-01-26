@@ -37,7 +37,7 @@ public class AdminController {
         this.userService = userService;
     }
 
-    @Secured({"ROLE_MANAGER"})
+
     @GetMapping("/products")
     public String showAllProducts(Model model,
                                   @RequestParam(defaultValue = "1", name = "p") Integer page,
@@ -53,6 +53,7 @@ public class AdminController {
         return "products";
     }
 
+//    Secured так и не ограничил доступ на уровнях метода!
     @Secured({"ROLE_ADMIN"})
     @GetMapping("/add")
     public String addProduct(
@@ -75,7 +76,6 @@ public class AdminController {
         return "redirect:/products";
     }
 
-
     @Secured({"ROLE_ADMIN"})
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
@@ -84,14 +84,12 @@ public class AdminController {
         return "product_edit_form";
     }
 
-
     @Secured({"ROLE_ADMIN"})
     @PostMapping("/edit")
     public String showEditForm(@ModelAttribute Product product) {
         productService.saveOrUpdate(product);
         return "redirect:/products";
     }
-
 
     @Secured({"ROLE_ADMIN"})
     @GetMapping("/delete/{id}")
@@ -101,7 +99,6 @@ public class AdminController {
         productService.deleteById(id);
         return "ok";
     }
-
 
     @Secured({"ROLE_ADMIN"})
     @GetMapping("/orders")
@@ -114,7 +111,6 @@ public class AdminController {
         model.addAttribute("orders", orders);
         return "orders";
     }
-
 
     @Secured({"ROLE_ADMIN"})
     @GetMapping("/orders/remove/{id}")
